@@ -36,7 +36,12 @@ cfg_if! {
     if #[cfg(target_os="windows")] {
         mod windows;
         use windows as os_impl;
-    } else if #[cfg(any(target_os="freebsd", target_os="linux", target_os="macos"))] {
+    } else if #[cfg(any(
+        target_os="freebsd",
+        target_os="linux",
+        target_os="macos",
+        target_os="nto"
+    ))] {
         mod unix;
         use crate::unix as os_impl;
     } else {
