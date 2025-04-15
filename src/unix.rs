@@ -61,14 +61,6 @@ impl Drop for MapData {
                     debug!("Failed to shm_unlink() shared memory : {}", _e);
                 };
             }
-
-            trace!("close({})", self.map_fd);
-            if let Err(_e) = close(self.map_fd.as_raw_fd()) {
-                debug!(
-                    "os_impl::Linux : Failed to close() shared memory file descriptor : {}",
-                    _e
-                );
-            };
         }
     }
 }
